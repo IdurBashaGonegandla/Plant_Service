@@ -3,8 +3,11 @@ package com.palle.plant.serviceImpl;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import com.palle.plant.constant.ErrorCodeEnum;
+import com.palle.plant.exception.PlantException;
 import com.palle.plant.pojo.Plant;
 import com.palle.plant.repository.PlantRepository;
 import com.palle.plant.service.PlantService;
@@ -44,6 +47,12 @@ public class PlantServiceImpl implements PlantService {
 
 		List<Plant> plants = repository.findByCategory(category);
 
+		if(plants.isEmpty()) {
+			throw new PlantException(
+					ErrorCodeEnum.NO_PLANT_AVAILABLE.getErrorCode(),
+					ErrorCodeEnum.NO_PLANT_AVAILABLE.getErrorMessage(),
+					HttpStatus.NOT_FOUND);
+		}
 		return plants;
 	}
 

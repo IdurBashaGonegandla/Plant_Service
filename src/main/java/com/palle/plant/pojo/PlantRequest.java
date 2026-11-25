@@ -23,6 +23,6 @@ public class PlantRequest {
 
 	private Integer stock;
 
-//	    private String imageUrl;
+	private String imageUrl;
 
 }

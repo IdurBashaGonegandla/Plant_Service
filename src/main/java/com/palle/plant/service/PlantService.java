@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import com.palle.plant.pojo.Plant;
-import com.palle.plant.pojo.PlantRequest;
 
 
 public interface PlantService {
